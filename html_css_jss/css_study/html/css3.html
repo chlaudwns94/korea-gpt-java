@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body {
+            background-color: #fafafa;
+        }
+        .box1 {
+            box-sizing: border-box;
+            margin: 100px 200px;
+           border: 0px solid red;
+           border-width: 2px 3px 4px 5px ;
+           border-radius: 10px;
+            width: 400px;
+            height: 400px;
+            background-color: #fffffa;
+            box-shadow: 0px 0px 5px 3px #00000044;
+        }
+        .profile-img-circle {
+            box-sizing: border-box;
+            border: 1px solid #7534ec;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .profile-img {
+            width: 100%;
+        }
+
+        .div-button {
+            margin: 40px auto;
+            border: 2px solid #555555;
+            border-radius: 20px;
+            padding: 5px 20px;
+            width: fit-content;
+            background-color: #f0f0f0;
+            font-size: 13.33333;
+            cursor: pointer;
+        }
+
+        button {
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+            padding: 5px 20px;
+            background-color: #ffffff;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #2295ca;
+
+            }
+
+            &:active {
+                background-color: #eeeeee;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="profile-img-circle">
+            <img class="profile-img" src="https://i.namu.wiki/i/MuCO_ocla-FyadGnRZytkRLggQOcqxv_hXNjN7aYXDOPivIChJNdiRXp6vwSXbM6GcUL3pVTL-5U5TKQ0f1YhA.svg" alt="">
+        </div>
+        <button>버튼</button>
+        <div class="div-button">버튼</div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,36 @@
+footer {
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    margin-bottom: 52px;
+}
+
+.footer-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.footer-link {
+    margin: 0 8px 12px;
+    color: #737373;
+    font-size: 12px;
+    &:hover{
+    text-decoration: underline;
+    }
+}
+
+.footer-copyright {
+    color: #737373;
+    font-size: 12px;
+    & svg {
+        transform: rotate(180deg);
+    }
+}
+
+footer > div:nth-of-type(2) > span {
+    margin-left: 16px;
+}

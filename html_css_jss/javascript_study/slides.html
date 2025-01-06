@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slide {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            margin: 100px auto;
+            border: 1px solid #dbdbdb;
+            width: 1200px;
+            height: 400px;
+            overflow: hidden;
+
+            & > img {
+                width: 100%;
+            }
+
+            & > .prev-button,
+            & > .next-button {
+                position: absolute;
+                transform: translateY(-50%);
+                top: 50%;
+                border: none;
+                padding: 10px;
+                background-color: transparent;
+                cursor: pointer;
+
+                & > svg {
+                    height: 100px;
+                }
+            }
+
+            & > .prev-button {            
+                left: 50px;
+            }
+
+            & > .next-button {           
+                right: 50px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <input type="checkbox" id="fixed">
+        <label for="fixed">고정</label>
+    </div>
+
+    <div class="slide">           
+        <button class="prev-button" onclick="handlePrevOnClick" >
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223"></path></svg>
+        </button>
+        <img src="" alt="">
+        <button class="next-button" onclick="handlenextOnClick">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671"></path></svg>
+        </button>
+    </div>
+    <script>
+        let currentIndex = 0;
+
+        const urList = [
+            "https://velog.velcdn.com/images/manimm1/post/085da37f-eb14-4bce-b6f7-f947d7273d88/image.png",
+            "https://hanamon.kr/wp-content/uploads/2021/12/javascript-logo.jpeg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBuM0cKT-0QOfhJd0OelvqbamCwIC6W17u2Q&s",
+            "https://ems.elancer.co.kr/99_upload/Append/T_Blog/editor/2023080711394394942.jpg",
+        ]
+
+        
+        function handlePrevOnClick() {
+            // if(checkbox == true && currentIndex <= 0){
+            //     return currentIndex
+            // }else if(currentIndex <= 0 ) {
+            //     currentIndex = urList.length-1
+            // }else{
+            // currentIndex--
+            // }
+            // const imgElement = document.querySelector(".slide > img")
+            // imgElement.src= urList[currentIndex];
+            const fixedCheckBox = document.querySelector("#fixed")
+            fixedCheckBox.checked
+            if(currentIndex > 0) {
+                currentIndex--;
+            }else {
+                if(fixedCheckBox.checked){
+                    return;
+                }
+                currentIndex = urList.length - 1;
+            }
+            setSlideImgSrc(urList[currentIndex]);
+        }
+
+        function handlenextOnClick() {
+            // if(currentIndex < urList.length-1 ) {
+            //     currentIndex++
+            // }else {
+            //     currentIndex = 0;
+            // }
+            // const imgElement = document.querySelector(".slide > img")
+            // imgElement.src= urList[currentIndex];  
+            const fixedCheckBox = document.querySelector("#fixed")
+            if(currentIndex < urList.length - 1) {
+                currentIndex++
+            }else{
+                if(fixedCheckBox.checked) {
+                    return;
+                }
+                currentIndex = 0;
+            }
+            setSlideImgSrc(urList[currentIndex]);
+        }
+
+        function setSlideImgSrc(src) {
+            const slideImgElemenet = document.querySelector(".slide > img");
+            slideImgElemenet.src = src;
+        }
+
+        window.onload = () => {
+            // const imgElement = document.querySelector(".slide > img")
+            // imgElement.src= urList[currentIndex];
+            // const imgBoxElement = document.querySelector(".slide > .prev-button");
+            // imgBoxElement.onclick = handlePrevOnClick;
+            // const imgBoxElement2 = document.querySelector(".slide > .next-button");
+            // imgBoxElement2.onclick = handlenextOnClick;
+            const prevButtonElement = document.querySelector(".prev-button");
+            const nextButtonElement = document.querySelector(".next-button");
+            prevButtonElement.onclick = handlePrevOnClick;
+            nextButtonElement.onclick = handlenextOnClick;
+            setSlideImgSrc(urList[currentIndex]);
+        }
+
+    </script>
+</body>
+</html>
