@@ -20,7 +20,5 @@ public class Book {
 
     private Author author;
     private Publisher publisher;
-    private BookCategory category;
-
-
+    private BookCategory bookCategory;
 }

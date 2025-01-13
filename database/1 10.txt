@@ -1,0 +1,13 @@
+https://sites.google.com/view/kji-java/db
+https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.33
+
+servlet 뭔가 안될때
+1.서버를 끈다
+2.File -> Close Project
+3.project 폴더로 이동
+4.  .idea펄다, target폴더 삭제
+5. 프로젝트 열기
+6.메이븐 clean install순서대로 실행
+7.tomcat 설정
+8.deployment - articfact 선택
+9.VM option => -Dfile.encoding=UTF-8 입력

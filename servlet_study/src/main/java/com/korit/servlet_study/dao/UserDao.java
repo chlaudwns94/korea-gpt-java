@@ -1,6 +1,6 @@
 package com.korit.servlet_study.dao;
 
-import com.korit.servlet_study.cofig.DBConnectionMgr;
+import com.korit.servlet_study.config.DBConnectionMgr;
 import com.korit.servlet_study.entity.User;
 
 import java.sql.Connection;

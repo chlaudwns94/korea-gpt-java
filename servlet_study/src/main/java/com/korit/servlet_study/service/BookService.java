@@ -19,8 +19,12 @@ public class BookService {
     }
 
     public Book addBook(Book book) {
+        bookDao.saveAuthor(book.getAuthor());
+        bookDao.savePublisher(book.getPublisher());
+        bookDao.saveBookCategory(book.getBookCategory());
 
         return bookDao.saveBook(book).get();
     }
+
 
 }

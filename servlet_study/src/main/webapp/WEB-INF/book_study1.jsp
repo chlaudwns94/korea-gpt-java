@@ -11,13 +11,14 @@
     <title>Title</title>
 </head>
 <body>
-<form action="http://localhost:8080/servlet_study_war/book1" method="post"></form>
-    <input type="text" name="" placeholder="도서명">
-    <input type="text" name="" placeholder="isbn">
-    <input type="text" name="" placeholder="저자명">
-    <input type="text" name="" placeholder="출판사">
-    <input type="text" name="" placeholder="카테고리">
-    <input type="text" name="" placeholder="표지">
+<form action="http://localhost:8080/servlet_study_war/book1" method="post">
+    <input type="text" name="bookName" placeholder="도서명">
+    <input type="text" name="isbn" placeholder="isbn">
+    <input type="text" name="author" placeholder="저자명">
+    <input type="text" name="publisher" placeholder="출판사명">
+    <input type="text" name="category" placeholder="카테고리">
+    <input type="text" name="imgUrl" placeholder="표지URL">
     <button type="submit">추가</button>
+</form>
 </body>
 </html>

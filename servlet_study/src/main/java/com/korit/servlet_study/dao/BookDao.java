@@ -1,6 +1,6 @@
 package com.korit.servlet_study.dao;
 
-import com.korit.servlet_study.cofig.DBConnectionMgr;
+import com.korit.servlet_study.config.DBConnectionMgr;
 import com.korit.servlet_study.entity.Author;
 import com.korit.servlet_study.entity.Book;
 import com.korit.servlet_study.entity.BookCategory;
@@ -15,6 +15,7 @@ import java.util.Optional;
 public class BookDao {
     private DBConnectionMgr mgr;
     private static BookDao bookDao;
+
     private BookDao() {
         mgr = DBConnectionMgr.getInstance();
     }
@@ -33,7 +34,7 @@ public class BookDao {
         try {
             con = mgr.getConnection();
             String sql = """
-                    insert into author values (default, ?)
+                    insert into author_tb values (default, ?)
                     """;
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, author.getAuthorName());
@@ -48,14 +49,14 @@ public class BookDao {
         }
         return Optional.ofNullable(author);
     }
-    public Optional<Publisher> savePublisher(Publisher publisher) {
 
+    public Optional<Publisher> savePublisher(Publisher publisher) {
         Connection con = null;
         PreparedStatement ps = null;
         try {
             con = mgr.getConnection();
             String sql = """
-                    insert into author values (default, ?)
+                    insert into publisher_tb values (default, ?)
                     """;
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, publisher.getPublisherName());
@@ -70,48 +71,51 @@ public class BookDao {
         }
         return Optional.ofNullable(publisher);
     }
-    public Optional<BookCategory> saveBookCategory(BookCategory bookcategory) {
 
+    public Optional<BookCategory> saveBookCategory(BookCategory bookCategory) {
         Connection con = null;
         PreparedStatement ps = null;
         try {
             con = mgr.getConnection();
             String sql = """
-                    insert into author values (default, ?)
+                    insert into category_tb values (default, ?)
                     """;
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, bookcategory.getCategoryName());
+            ps.setString(1, bookCategory.getCategoryName());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 int id = rs.getInt(1);
-                bookcategory.setCategoryId(id);
+                bookCategory.setCategoryId(id);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return Optional.ofNullable(bookcategory);
+        return Optional.ofNullable(bookCategory);
     }
-    public Optional<Book> saveBook(Book book) {
 
+    public Optional<Book> saveBook(Book book) {
         Connection con = null;
         PreparedStatement ps = null;
         try {
             con = mgr.getConnection();
             String sql = """
-                    insert into author values (default, ?)
+                    insert into book_tb values (default, ?, ?, ?, ?, ?, ?)
                     """;
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, book.getBookName());
+            ps.setInt(2, book.getAuthor().getAuthorId());
+            ps.setString(3, book.getIsbn());
+            ps.setInt(4, book.getPublisher().getPublisherId());
+            ps.setInt(5, book.getBookCategory().getCategoryId());
+            ps.setString(6, book.getBookImgUrl());
             ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                int id = rs.getInt(1);
-                book.setBookId(id);
-            }
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return Optional.ofNullable(book);
     }
+
+
 }
