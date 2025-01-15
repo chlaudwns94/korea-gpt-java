@@ -1,0 +1,8 @@
+material
+react code snippet
+
+vscode react html 자동 완성
+
+
+select @@log_bin_trust_function_creators;
+set global log_bin_trust_function_creators = 1;

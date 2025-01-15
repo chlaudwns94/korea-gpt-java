@@ -9,24 +9,39 @@ import { useState } from "react";
 function App2() {
     const [ num, setNum ] = useState(0);
 
-    let number = 0;
-
     console.log(num);
-    console.log(number);
 
     const handleIncreaseOnClick = () => {
-        setNum(num + 1);
+        if(num < 10) {
+            setNum(num + 1);
+        } else {
+            return num;
+        }
     }
 
     const handledecreaseOnClick = () => {
+        if(num < 1) {
+            return
+        } else {
         setNum(num - 1);
-        
+        }
     }
+
+    const multiplyOnClick= () => {
+        setNum(num * 2);
+    }
+
+    const devideOnClick = () => {
+        setNum(num / 2);
+    }
+
 
     return <>
         <h1>{num}</h1>
         <button onClick={handleIncreaseOnClick}>1증가</button>
         <button onClick={handledecreaseOnClick}>1감소</button>
+        <button onClick={multiplyOnClick}>곱하기</button>
+    <button onClick={devideOnClick}>나누기</button>
     </>
 }
 

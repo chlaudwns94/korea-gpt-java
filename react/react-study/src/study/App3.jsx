@@ -1,24 +1,41 @@
-import { useState } from "react";
+import React, { useState } from 'react';
+
+function App3(props) {
+
+    const [ name, setName ] = useState("");
+    const [ gender, setgender ] = useState("");
+    const [ nameInputValue, setNameInputValue ] = useState("");
+    const [ genderInputValue, setGenderInputValue ] = useState("male");
 
 
-function App3() {
-     
-    const [num, setnum] = useState(2);
+    console.log(nameInputValue); 
 
-    const multiplyOnClick= () => {
-        setnum(num * 2);
+    const handleNameInputOnChange = (e) => {
+        setNameInputValue(e.target.value);
+    } 
+    
+    const handleGenderInputOnChange = (e) => {
+        setGenderInputValue(e.target.value);
     }
 
-    const devideOnClick = () => {
-        setnum(num / 2);
+    const handleNameOnClick = () => {
+        setName(nameInputValue);
+        setNameInputValue("");
+        setgender(setGenderInputValue === "male" ? "남" : "여" );
     }
 
 
-    return <>
-    <h1>{num}</h1>
-    <button onClick={multiplyOnClick}>곱하기</button>
-    <button onClick={devideOnClick}>나누기</button>
-    </>
+    return (
+        <div>
+            <h1>이름: {name} ({gender})</h1>
+            <input type="text" onChange={handleNameInputOnChange} value={nameInputValue}/>
+            <input type="radio" id="male" name="gender" onChange={handleGenderInputOnChange} checked={genderInputValue === "male"} value={"male"} />
+            <label htmlFor="male">남</label>
+            <input type="radio" id="female" name="gender" onChange={handleGenderInputOnChange} checked={genderInputValue === "female"} value={"female"} />
+            <label htmlFor="female">여</label>
+            <button onClick={handleNameOnClick}>확인</button>
+        </div>
+    );
 }
 
 export default App3;
