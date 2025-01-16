@@ -14,29 +14,21 @@
  * 
  */
 import React, { useState } from 'react';
-import FindBooks from './components/books/FindBooks/FindBooks';
-import NewBooks from './components/books/NewBooks/NewBooks';
+import BookRegister from './components/books/BookRegister/BookRegister';
+import BookSearch from './components/books/BookSearch/BookSearch';
+import "./styles/app8.css";
 
 function App7(props) {
-    const [ path, setPath ] = useState("findbooks");
-    const { booksList, setBooksList } = useState([]);
-    const handlePageChangeButtonOnClick = (e, path) => {
-        setPath(path);
-    };
+    const [bookList, setBookList ] = useState([]);
 
- 
 
     return (
-        <div>
-            <button onClick={(e) => handlePageChangeButtonOnClick(e, "findbooks")}>도서 조회</button>
-            <button onClick={(e) => handlePageChangeButtonOnClick(e, "newbooks")}>도서 등록</button>
-            {
-                path === "findbooks" && <FindBooks booksList={booksList} />
-            }
-            {
-                path === "newbooks" && <NewBooks booksList={booksList} setBooksList={setBooksList}/>
-            }
+        <div className='container'>
+            <BookRegister bookList={bookList} setBookList={setBookList}/>
+            <BookSearch bookList={bookList}/>
+            
         </div>
+        
     );
 }
 
