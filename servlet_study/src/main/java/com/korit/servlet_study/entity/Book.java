@@ -21,4 +21,8 @@ public class Book {
     private Author author;
     private Publisher publisher;
     private BookCategory bookCategory;
+
+    private String author2;
+    private String publisher2;
+    private String bookCategory2;
 }

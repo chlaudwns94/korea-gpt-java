@@ -10,18 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd68f578-91db-461e-a1e7-b227c4d63ac3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/cofig/ConnectionObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/cofig/DBConnectionMgr.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/react-study/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/react-study/src/study/App10.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/study/App10.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/cofig/DBConnectionMgr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/config/DBConnectionMgr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dao/BookDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/entity/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/entity/BookCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/entity/BookCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/BookServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/BookServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/book_study1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/book_study1.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,6 +183,7 @@
       <updated>1736489664873</updated>
       <workItem from="1736489666005" duration="9221000" />
       <workItem from="1736726294862" duration="2945000" />
+      <workItem from="1737097563389" duration="6105000" />
     </task>
     <servers />
   </component>

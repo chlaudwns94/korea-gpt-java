@@ -1,0 +1,5 @@
+mvn jackson
+
+json viewer
+
+vsc npm install axios

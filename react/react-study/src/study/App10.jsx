@@ -38,6 +38,8 @@ function App10(props) {
         setNum1(num1+10);
     }
 
+    console.log("??????");
+
     return (
         <div>
              <h1>Num1: {num1}</h1>
