@@ -10,9 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd68f578-91db-461e-a1e7-b227c4d63ac3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../react/react-study/src/pages/WritePage/WritePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/pages/WritePage/WritePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/react-study/src/pages/WritePage/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/pages/WritePage/style.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/BookRestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/BookRestServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/UserRestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/UserRestServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +71,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "inlay.hints",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -185,6 +185,8 @@
       <workItem from="1736726294862" duration="2945000" />
       <workItem from="1737097563389" duration="6105000" />
       <workItem from="1737333121764" duration="9452000" />
+      <workItem from="1737418022243" duration="701000" />
+      <workItem from="1737419699871" duration="17016000" />
     </task>
     <servers />
   </component>
