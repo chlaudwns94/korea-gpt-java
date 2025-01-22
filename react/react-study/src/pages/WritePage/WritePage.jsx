@@ -60,8 +60,12 @@ function WritePage(props) {
 
         try {
             const resp = await axios.post("http://localhost:8080/servlet_study_war/api/board", inputValue);
+            // axios.post("http://localhost:8080/servlet_study_war/api/board", inputValue).then(resp => {console.log(resp)})
+            console.log(resp)
+            alert("게시들 작성 완료");
+            
         }catch(error) {
-
+            console.error(error);
         }
     }
 

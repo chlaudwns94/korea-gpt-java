@@ -10,9 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd68f578-91db-461e-a1e7-b227c4d63ac3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/dao/BoardDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/dao/BoardDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/dto/InsertBoardDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/dto/InsertBoardDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/service/BoardService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/service/BoardService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/servlet/BoardRestServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/servlet/BoardRestServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/react-study/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react/react-study/src/pages/IndexPage/IndexPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/pages/IndexPage/IndexPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../react/react-study/src/pages/WritePage/WritePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/pages/WritePage/WritePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/react-study/src/pages/WritePage/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/pages/WritePage/style.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dao/BoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dao/BoardDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/service/BoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/BoardRestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/BoardRestServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,26 +65,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.servlet_study [clean].executor": "Run",
-    "Maven.servlet_study [install].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Tomcat Server.Tomcat 9.0.98.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/korea-gpt-java/servlet_study",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.servlet_study [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.servlet_study [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.98.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/korea-gpt-java/servlet_study&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.98" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.98" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
@@ -187,6 +197,8 @@
       <workItem from="1737333121764" duration="9452000" />
       <workItem from="1737418022243" duration="701000" />
       <workItem from="1737419699871" duration="17016000" />
+      <workItem from="1737504405418" duration="8882000" />
+      <workItem from="1737516445140" duration="14652000" />
     </task>
     <servers />
   </component>

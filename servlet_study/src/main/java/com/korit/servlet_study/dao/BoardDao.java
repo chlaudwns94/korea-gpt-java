@@ -25,7 +25,7 @@ public class BoardDao {
         return instance;
     }
 
-    public Optional<Board> save(Board board) {
+    public Board save(Board board) {
         Board insertedBoard = null;
         Connection con = null;
         PreparedStatement ps = null;
@@ -51,7 +51,7 @@ public class BoardDao {
         }finally {
             mgr.freeConnection(con, ps);
         }
-        return Optional.ofNullable(insertedBoard);
+        return insertedBoard;
     }
     }
 
