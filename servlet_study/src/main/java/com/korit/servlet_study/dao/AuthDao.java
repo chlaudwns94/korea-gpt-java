@@ -34,6 +34,7 @@ public class AuthDao {
             con = dbConnectionMgr.getConnection();
             String sql = """
                     select
+                        user_id,
                         username,
                         password,
                         name,

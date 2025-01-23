@@ -10,19 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd68f578-91db-461e-a1e7-b227c4d63ac3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/dao/BoardDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/dao/BoardDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/dto/InsertBoardDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/dto/InsertBoardDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/service/BoardService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/service/BoardService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/servlet/BoardRestServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.98/webapps/servlet_study_war/WEB-INF/classes/com/korit/servlet_study/servlet/BoardRestServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/react-study/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/react-study/src/pages/IndexPage/IndexPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/pages/IndexPage/IndexPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react/react-study/src/pages/WritePage/WritePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../react/react-study/src/pages/WritePage/WritePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dao/BoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dao/BoardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/service/BoardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/BoardRestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/servlet/BoardRestServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dao/AuthDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dao/AuthDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dto/ResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/dto/ResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/security/jwt/JwtProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/security/jwt/JwtProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/korit/servlet_study/service/AuthService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,6 +191,7 @@
       <workItem from="1737419699871" duration="17016000" />
       <workItem from="1737504405418" duration="8882000" />
       <workItem from="1737516445140" duration="14652000" />
+      <workItem from="1737590815729" duration="18570000" />
     </task>
     <servers />
   </component>

@@ -47,7 +47,7 @@ function SignupPage(props) {
             const response = await axios.post("http://localhost:8080/servlet_study_war/api/signup", inputValue);
             console.log(response);
             alert("회원가입 완료");
-            navigate(`/signin?username=${response.data.data.username}`);
+            navigate(`/signin?username=${response.data.body.username}`);
         } catch (error) {
             
         }

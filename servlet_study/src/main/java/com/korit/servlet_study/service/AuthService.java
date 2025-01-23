@@ -44,6 +44,7 @@ public class AuthService {
         if(!BCrypt.checkpw(signinDto.getPassword(), foundUser.getPassword())) {
             return ResponseDto.fail("사용자 정보를 다시 확인하세요.");
         }
-        return ResponseDto.success(foundUser);
+        String accessToken = jwtPorvider.generateToken(foundUser);
+        return ResponseDto.success(accessToken);
     }
 }
