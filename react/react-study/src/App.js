@@ -10,11 +10,11 @@ import SigninPage from "./pages/SigninPage/SigninPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRecoilState } from "recoil";
-import { authUserIdAtomState } from "./atoms/authAtom";
+import { accessTokenAtomState } from "./atoms/authAtom";
 import { useQuery } from "react-query";
 
 function App() {
-  const location = useLocation();
+  const [ accessToken, setAccessToken ] = useRecoilState(accessTokenAtomState);
 
   const authenticatedUser = async () => {
       return await axios.get("http://localhost:8080/servlet_study_war/api/authenticated", {
@@ -28,13 +28,11 @@ function App() {
     ["authenticatedUserQuery"],
     authenticatedUser,
     {
+      retry: 0,
       refetchOnWindowFocus: false,
-      enabled: !!localStorage.getItem("AccessToken"),
+      enabled: !!accessToken,
     }
   );
-  
-  console.log(authenticatedUserQuery.isLoading)
-
   return (
     <>
       <Global styles={global} />
