@@ -1,9 +1,13 @@
 package com.korit.springboot_study.controller;
 
+import com.korit.springboot_study.dto.request.study.ReqAddStudentDto;
 import com.korit.springboot_study.dto.request.study.ReqStudentDto;
+import com.korit.springboot_study.dto.response.study.RespAddStudentDto;
+import com.korit.springboot_study.dto.response.study.RespStudentDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -94,7 +98,7 @@ public class FirstRestController {
     @ApiOperation(value = "학생 조회하기", notes = "stream을 사용하여 선형 탐색 합습")
     @GetMapping("/api/student3")
     public Map<String, Object> getStudent3(
-            @ApiParam(value = "id롤 학생 검색", required = false)
+            @ApiParam(value = "id로 학생 검색", required = false)
             @RequestParam(required = false) int studentId) {
         List<Map<String, Object>> students = new ArrayList<>();
         students.add(Map.of("id", 11, "name", "OOO", "age", 26));
@@ -110,11 +114,36 @@ public class FirstRestController {
     }
 
     @GetMapping("/api/student4/{studentId}")
-    public Map<String, Object> getStudent4(
+    public RespStudentDto getStudent4(
             @ApiParam(value = "학생 ID", required = true)
             @PathVariable int studentId,
+            @ModelAttribute
             ReqStudentDto reqStudentDto
             ) {
-        return Map.of("id", studentId, "name", reqStudentDto.getName(), "age", reqStudentDto.getAge());
+            return new RespStudentDto(100, "깅준이", 33);
+    }
+
+    @PostMapping("/api/student")
+    @ApiOperation(value = "학생추가", notes = "학생정보를 입력받아 user_tb에 추가")
+    public ResponseEntity<RespAddStudentDto> addStudent(@RequestBody ReqAddStudentDto reqAddStudentDto) {
+        System.out.println(reqAddStudentDto);
+        return ResponseEntity.badRequest().body(new RespAddStudentDto("학생 추가 실패", false));
+    }
+
+    @PutMapping("/api/student/{studentId}")
+    @ApiOperation(value = "학생 정보 수정", notes = "학생 Id를 기준으로 학생 정보를 수정합니다.")
+    public ResponseEntity<?> updateStudent(
+            @ApiParam(value = "학생 ID", example = "1", required = true)
+            @PathVariable int studentId,
+            @RequestBody Map<String, Object> reqBody) {
+        System.out.println(reqBody);
+        return ResponseEntity.ok().body(null);
+    }
+
+    @ApiOperation(value = "학생 정보 삭제", notes = "학생 ID를 기준으로 정보를 삭제합니다.")
+    @DeleteMapping("/api/student/{studentId}")
+    public ResponseEntity<?> deleteStudent(@PathVariable int studentId) {
+
+        return ResponseEntity.ok().body(null);
     }
 }
