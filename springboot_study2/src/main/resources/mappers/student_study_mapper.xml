@@ -42,5 +42,13 @@
             major_id = 100
     </select>
 
+    <update id="updateMajorName" keyProperty="majorId" useGeneratedKeys="true">
+        update major_tb
+        set major_name = #{majorName}
+        where major_id = #{majorId}
+    </update>
+
+
+
 </mapper>
 
