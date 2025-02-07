@@ -1,6 +1,7 @@
 package com.korit.springboot_study.service;
 
 import com.korit.springboot_study.dto.request.books.ReqAddBookDto;
+import com.korit.springboot_study.dto.request.books.ReqSearchBookDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.books.Book;
 import com.korit.springboot_study.repository.BookRepository;
@@ -26,7 +27,11 @@ public class BookService {
     @Transactional(rollbackFor = Exception.class)
     public SuccessResponseDto<Book> AddBooks(ReqAddBookDto reqAddBookDto) throws DuplicateKeyException {
         return new SuccessResponseDto<>(
-                bookRepository.saveBooks(new Book(0, reqAddBookDto.getBookName(), 0,null,0,0,null)).orElseThrow()
+                bookRepository.saveBooks(reqAddBookDto.toBook()).orElseThrow()
         );
+    }
+
+    public SuccessResponseDto<List<Book>> getAllBooksByName(ReqSearchBookDto reqSearchBookDto) {
+        return new SuccessResponseDto<>(bookRepository.findBookByName(reqSearchBookDto.getBookName()).orElseThrow());
     }
 }

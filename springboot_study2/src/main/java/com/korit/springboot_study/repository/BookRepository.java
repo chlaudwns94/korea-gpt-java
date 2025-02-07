@@ -1,6 +1,7 @@
 package com.korit.springboot_study.repository;
 
 import com.korit.springboot_study.entity.books.Book;
+import com.korit.springboot_study.entity.books.Publisher;
 import com.korit.springboot_study.exception.CustomDuplicateKeyException;
 import com.korit.springboot_study.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +35,14 @@ public class BookRepository {
                     Map.of("bookName", "이미 존재하는 책제목입니다.")
             );
         }
-        return Optional.ofNullable(new Book(book.getBookId(),
-                book.getBookName(),
-                book.getAuthorId(),
-                book.getIsbn(),
-                book.getCategoryId(),
-                book.getPublisherId(),
-                book.getUrl()));
+        return Optional.ofNullable(book);
+    }
+
+    public Optional<List<Book>> findBookByName(String bookName) {
+        List<Book> foundPublisher = bookMapper.selectAllBookByName(bookName);
+        return foundPublisher
+                .isEmpty()
+                ? Optional.empty()
+                : Optional.ofNullable(foundPublisher);
     }
 }

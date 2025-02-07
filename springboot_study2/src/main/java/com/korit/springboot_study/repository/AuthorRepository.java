@@ -36,4 +36,12 @@ public class AuthorRepository {
         }
             return Optional.ofNullable(new Author(author.getAuthorId(), author.getAuthorName()));
     }
+
+    public Optional<List<Author>> findAuthorByName(Author author) {
+        List<Author> foundAuthors = authorMapper.selectAuthorByName(author.getAuthorName());
+        return foundAuthors
+                .isEmpty()
+                ?Optional.empty()
+                :Optional.ofNullable(foundAuthors);
+    }
 }

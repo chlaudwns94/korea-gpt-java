@@ -22,4 +22,14 @@
         insert into publisher_tb
         values (default, #{publisherName})
     </insert>
+
+    <select id="selectAllPublisherByName" resultMap="publisherResultMap">
+        select
+            publisher_id,
+            publisher_name
+        from
+            publisher_tb
+        where
+            publisher_name like concat("%", #{publisherName}, "%")
+    </select>
 </mapper>

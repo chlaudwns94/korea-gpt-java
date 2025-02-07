@@ -1,6 +1,7 @@
 package com.korit.springboot_study.service;
 
 import com.korit.springboot_study.dto.request.books.ReqAddPublisherDto;
+import com.korit.springboot_study.dto.request.books.ReqSearchPublisherDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.books.Publisher;
 import com.korit.springboot_study.repository.PublisherRepository;
@@ -29,5 +30,10 @@ public class PublisherService {
         return new SuccessResponseDto<>(
                 publisherRepository.savePublisher(new Publisher(0, reqAddPublisherDto.getPublisherName()))
         );
+    }
+
+    public SuccessResponseDto<List<Publisher>> getAllPublishersByName(ReqSearchPublisherDto reqSearchPublisherDto) {
+        List<Publisher> foundPublisher = publisherRepository.findAllPublisher().orElseThrow();
+        return new SuccessResponseDto<>(foundPublisher);
     }
 }

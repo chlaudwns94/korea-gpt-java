@@ -6,7 +6,6 @@ import com.korit.springboot_study.mapper.PublisherMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -26,12 +25,20 @@ public class PublisherRepository {
     public Optional<Publisher> savePublisher(Publisher publisher) throws DuplicateKeyException {
         try {
             publisherMapper.insertPublisher(publisher);
-        }catch (DuplicateKeyException e){
-            throw  new CustomDuplicateKeyException(
+        } catch (DuplicateKeyException e) {
+            throw new CustomDuplicateKeyException(
                     e.getMessage(),
                     Map.of("publisherName", "이미존재한느 출판사입니다.")
             );
         }
         return Optional.ofNullable(new Publisher(publisher.getPublisherId(), publisher.getPublisherName()));
+    }
+
+    public Optional<List<Publisher>> findAuthorByName(String publisherName) {
+        List<Publisher> foundPublisher = publisherMapper.selectAllPublisherByName(publisherName);
+        return foundPublisher
+                .isEmpty()
+                ? Optional.empty()
+                : Optional.ofNullable(foundPublisher);
     }
 }

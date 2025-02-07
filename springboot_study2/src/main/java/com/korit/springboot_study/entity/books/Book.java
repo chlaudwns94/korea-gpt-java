@@ -16,5 +16,9 @@ public class Book {
     private String isbn;
     private int categoryId;
     private int publisherId;
-    private String url;
+    private String bookImgUrl;
+
+    private Author author;
+    private Category category;
+    private Publisher publisher;
 }

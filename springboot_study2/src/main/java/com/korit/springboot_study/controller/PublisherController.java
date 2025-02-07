@@ -1,6 +1,7 @@
 package com.korit.springboot_study.controller;
 
 import com.korit.springboot_study.dto.request.books.ReqAddPublisherDto;
+import com.korit.springboot_study.dto.request.books.ReqSearchPublisherDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.books.Publisher;
 import com.korit.springboot_study.service.PublisherService;
@@ -25,8 +26,13 @@ public class PublisherController {
         return ResponseEntity.ok().body(publisherService.getAllPublishers());
     }
 
-    @PostMapping("/api/books/publisher")
+    @PostMapping("/api/books/publisher/add")
     public ResponseEntity<SuccessResponseDto<Optional<Publisher>>> addPublisher(ReqAddPublisherDto reqAddPublisherDto) throws DuplicateKeyException {
         return ResponseEntity.ok().body(publisherService.AddPublisher(reqAddPublisherDto));
+    }
+
+    @GetMapping("/api/books/publisher")
+    public ResponseEntity<SuccessResponseDto<List<Publisher>>> getAllPublishersByName(ReqSearchPublisherDto reqSearchPublisherDto) throws DuplicateKeyException {
+        return ResponseEntity.ok().body(publisherService.getAllPublishersByName(reqSearchPublisherDto));
     }
 }
