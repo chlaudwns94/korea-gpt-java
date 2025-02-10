@@ -27,4 +27,20 @@ public class UserRepository {
         }
         return Optional.of(user);
     }
+
+    public Optional<User> findById(int id) {
+        return Optional.ofNullable(userMapper.selectById(id));
+    }
+
+    public List<User> findAll() {
+        return userMapper.selectAllUsers();
+    }
+
+    public Optional<Boolean> updateUserById(User user) {
+        return userMapper.updateUserById(user) < 1 ? Optional.empty() : Optional.of(true);
+    }
+
+    public Optional<Boolean> deleteById(int id) {
+        return userMapper.deleteById(id) < 1 ? Optional.empty() : Optional.of(true);
+    }
 }

@@ -1,4 +1,4 @@
-package com.korit.springboot_study.entity;
+package com.korit.project.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +20,5 @@ public class User {
     private String password;
     private String name;
     private String email;
-
-    List<UserRole> userRoles;
-
+    private LocalDateTime createAt;
 }
