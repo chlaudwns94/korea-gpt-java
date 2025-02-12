@@ -50,14 +50,14 @@
 
         ifnull(cplct.like_count, 0) as like_count
         from
-        post_tb pt
-        inner join user_tb ut on(ut.user_id = pt.user_id)
-        left outer join cte_post_like_count_tb cplct on(cplct.post_id = pt.post_id)
+            post_tb pt
+            inner join user_tb ut on(ut.user_id = pt.user_id)
+            left outer join cte_post_like_count_tb cplct on(cplct.post_id = pt.post_id)
         where
-        post_id = #{postId}
+            pt.post_id = #{postId}
     </select>
 
-    <select id="selectAllBykeywordContaining" resultMap="postResultMap">
+    <select id="selectAllByKeywordContaining" resultMap="postResultMap">
         with cte_post_like_count_tb as (
         select
         post_id,
