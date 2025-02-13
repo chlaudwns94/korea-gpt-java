@@ -22,4 +22,8 @@ public class User {
 
     List<UserRole> userRoles;
 
+    private int isAccountNonExpired;
+    private int isAccountNonLocked;
+    private int isCredentialsNonExpired;
+    private int isEnabled;
 }

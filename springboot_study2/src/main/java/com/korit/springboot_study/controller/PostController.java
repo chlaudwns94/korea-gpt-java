@@ -4,6 +4,7 @@ import com.korit.springboot_study.aspect.annotation.TimerAop;
 import com.korit.springboot_study.dto.request.ReqCreatePostDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Post;
+import com.korit.springboot_study.service.AuthencationService;
 import com.korit.springboot_study.service.PostService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import java.util.List;
 @RestController
 @Api(tags = "게시글 API")
 public class PostController {
+
+
 
     @Autowired
     private PostService postService;
