@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import { useQuery } from "react-query";
+import { api } from "./api/config/axiosConfig";
+import { healthCheckApi } from "./api/apis/healthCheckApi";
+import { Route, Routes } from "react-router-dom";
+import IndexPage from "./pages/IndexPage/IndexPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import SigninPage from "./pages/SigninPage/SigninPage";
+import SignupPage from "./pages/SignupPage/SignupPage";
+import { Container } from "@mui/material";
 
 function App() {
+	const healthCheck = useQuery(["healthCheckQuery"], healthCheckApi,
+	{
+		refetchOnWindowFocus: false,
+		enabled: true,
+		cacheTime: 1000 * 60 * 10, //캐시 유지 시간(언마운트 이후),
+		staleTime: 1000 * 60 * 10, //10분마다 최신의 캐시 상태 유지(refetch)
+	}
+);
+
+	if(!healthCheck.isLoading) {
+		console.log(healthCheck.data.data.status)
+	}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxWidth="sm">
+		<Routes>
+			<Route path="/" element={<IndexPage />} />
+			<Route path="/profile" element={<ProfilePage />} />
+			<Route path="/signin" element={<SigninPage />} />
+			<Route path="/signup" element={<SignupPage />} />
+		</Routes>
+    </Container>
   );
 }
 
