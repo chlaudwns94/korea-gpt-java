@@ -18,12 +18,13 @@ import java.util.stream.Collectors;
 public class JwtProvider {
 
     private Key key;
+
     public JwtProvider(@Value("${jwt.secret}") String secret) {
         key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
     }
 
     private Date getExpireDate() {
-        return new Date(new Date().getTime() + (1000l * 60 * 60 * 24));
+        return new Date(new Date().getTime() + (1000l * 60 * 60 * 24 * 365));
     }
 
     public String createAccessToken(User user) {
@@ -33,6 +34,7 @@ public class JwtProvider {
                 .setExpiration(getExpireDate())
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
+
     }
 
     public boolean validateToken(String token) {
@@ -45,20 +47,21 @@ public class JwtProvider {
             JwtParser parser = Jwts.parserBuilder()
                     .setSigningKey(key)
                     .build();
-            claims = parser.parseClaimsJws(removeBearer(token)).getBody();
+            claims = parser.parseClaimsJws(token).getBody();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return claims;
     }
 
-    // Authorization -> AccessToken(Bearer ????.????.????)
-    private String removeBearer(String bearerToken) {
+    // Authorization -> AccessToken(Bearer ?????.?????.?????)
+    public String removeBearer(String bearerToken) {
         String token = null;
-         final String BEARER_KEYWORD = "bearer";
-        if (bearerToken.startsWith("Bearer ")) {
+        final String BEARER_KEYWORD = "Bearer ";
+        if(bearerToken.startsWith(BEARER_KEYWORD)) {
             token = bearerToken.substring(BEARER_KEYWORD.length());
         }
         return token;
     }
+
 }

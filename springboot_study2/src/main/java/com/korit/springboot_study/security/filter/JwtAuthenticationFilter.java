@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.List;
 
 @Component
 public class JwtAuthenticationFilter implements Filter {
@@ -29,6 +30,8 @@ public class JwtAuthenticationFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
+        System.out.println(request.getRequestURI());
+
         // Bearer Token(JWT)
         String authorization = request.getHeader("Authorization");
 
@@ -40,9 +43,10 @@ public class JwtAuthenticationFilter implements Filter {
     }
 
     private void setJwtAuthentication(String bearerToken) {
-        Claims claims = jwtProvider.parseToken(bearerToken);
+        String accessToken = jwtProvider.removeBearer(bearerToken);
+        Claims claims = jwtProvider.parseToken(accessToken);
         if(claims == null) {
-            throw new JwtException("Invalid JWT token");
+            return;
         }
         int userId = Integer.parseInt(claims.get("userId").toString());
         userRepository.findById(userId).ifPresent(user -> {
@@ -52,4 +56,5 @@ public class JwtAuthenticationFilter implements Filter {
             securityContext.setAuthentication(authentication);
         });
     }
+
 }

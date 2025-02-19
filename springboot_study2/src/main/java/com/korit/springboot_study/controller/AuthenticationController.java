@@ -33,4 +33,10 @@ public class AuthenticationController {
     public ResponseEntity<SuccessResponseDto<String>> signin(@Valid @RequestBody ReqSigninDto reqSigninDto) throws MethodArgumentNotValidException {
         return ResponseEntity.ok().body(new SuccessResponseDto<>(authencationService.signin(reqSigninDto)));
     }
+
+    @PostMapping("/api/auth/logout")
+    @ApiOperation(value = "로그아웃")
+    public ResponseEntity<SuccessResponseDto<?>> logout() {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(null));
+    }
 }
