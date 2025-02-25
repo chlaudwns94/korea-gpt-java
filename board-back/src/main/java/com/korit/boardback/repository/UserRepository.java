@@ -9,16 +9,18 @@ import java.util.Optional;
 
 @Repository
 public class UserRepository {
-
     @Autowired
-    private UserMapper usermapper;
+    private UserMapper userMapper;
 
     public Optional<User> findByUsername(String username) {
-        return Optional.ofNullable(usermapper.selectByUsername(username));
+        return Optional.ofNullable(userMapper.selectByUsername(username));
+    }
+    public Optional<User> findById(int userId) {
+        return Optional.ofNullable(userMapper.selectById(userId));
     }
 
     public User save(User user) {
-        usermapper.insert(user);
+        userMapper.insert(user);
         return user;
     }
 }

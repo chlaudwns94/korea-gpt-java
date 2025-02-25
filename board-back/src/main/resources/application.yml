@@ -30,7 +30,7 @@ server:
 react:
   server:
     protocol: https
-    host: ??? ?? ?? ??(ip?? ???)
+    host: ??? ?? ?? ??(ip ?? ???)
     port: 5173
 
 ---
@@ -39,7 +39,13 @@ spring:
   config:
     activate:
       on-profile: common
+
 mybatis:
   mapper-locations:
     - /mappers/*.xml
     - /mappers/user/*.xml
+
+
+
+
+

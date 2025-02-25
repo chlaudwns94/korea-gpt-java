@@ -11,4 +11,5 @@ public class SwaggerConfig {
     public OpenAPI getOpenAPI() {
         return new OpenAPI();
     }
+
 }

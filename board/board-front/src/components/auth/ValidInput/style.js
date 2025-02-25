@@ -29,4 +29,4 @@ export const messageText = css`
     margin-top: 0.3rem;
     color: #ff3f3f;
     font-size: 1.2rem;
-`
+`;
