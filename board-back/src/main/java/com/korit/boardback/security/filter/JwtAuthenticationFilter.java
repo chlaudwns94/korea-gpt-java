@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,6 @@ public class JwtAuthenticationFilter implements Filter {
 
     @Autowired
     private JwtUtil jwtUtil;
-
     @Autowired
     private UserRepository userRepository;
 
@@ -34,12 +34,12 @@ public class JwtAuthenticationFilter implements Filter {
     }
 
     private void jwtAuthentication(String accessToken) {
-        if(accessToken == null) {
-            return;
-        }
+        if(accessToken == null) {return;}
         Claims claims = jwtUtil.parseToken(accessToken);
+
         int userId = Integer.parseInt(claims.getId());
         User user = userRepository.findById(userId).get();
+
         PrincipalUser principalUser = PrincipalUser.builder().user(user).build();
         Authentication authentication =
                 new UsernamePasswordAuthenticationToken(principalUser, null, principalUser.getAuthorities());
@@ -49,9 +49,12 @@ public class JwtAuthenticationFilter implements Filter {
     private String getAccessToken(HttpServletRequest request) {
         String accessToken = null;
         String authorization = request.getHeader("Authorization");
+
         if (authorization != null && authorization.startsWith("Bearer ")) {
             accessToken = authorization.substring(7);
         }
+
         return accessToken;
     }
+
 }

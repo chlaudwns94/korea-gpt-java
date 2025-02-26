@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage/LoginPage"
 import { Route, Routes } from "react-router-dom"
 import JoinPage from "./pages/JoinPage/JoinPage"
 import { useUserMeQuery } from "./queries/userQuery"
+import AccountPage from "./pages/AccountPage/AccountPage"
 
 function App() {
 
@@ -15,15 +16,17 @@ function App() {
 	return (
     	<>
 			<Global styles={global} />
-				<MainLayout>
-					<MainSidebar />
-					<MainContainer>
-						<Routes>
-							<Route path="/auth/login" element={<LoginPage />} />
-							<Route path="/auth/join" element={<JoinPage />} />
-						</Routes>
-					</MainContainer>
-				</MainLayout>
+			<MainLayout>
+				<MainSidebar />
+				<MainContainer>
+					<Routes>
+						<Route path="/account/setting" element={<AccountPage />} />
+						<Route path="/auth/login" element={<LoginPage />} />
+						<Route path="/auth/join" element={<JoinPage />} />
+					</Routes>
+				</MainContainer>
+			</MainLayout>
+			
     	</>
   	)
 }

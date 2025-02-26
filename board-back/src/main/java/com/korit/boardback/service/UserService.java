@@ -13,35 +13,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-
     @Autowired
     private JwtUtil jwtUtil;
-
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private UserRoleRepository userRoleRepository;
+    @Autowired
+    private FileService fileService;
 
     public boolean duplicatedByUsername(String username) {
         return userRepository.findByUsername(username).isPresent();
     }
 
-    @Transactional(rollbackFor = Exception.class
-    )
+    @Transactional(rollbackFor = Exception.class)
     public User join(ReqJoinDto reqJoinDto) {
         if(duplicatedByUsername(reqJoinDto.getUsername())) {
             throw new DuplicatedValueException(List.of(FieldError.builder()
@@ -59,30 +56,54 @@ public class UserService {
                 .credentialsExpired(1)
                 .accountEnabled(1)
                 .build();
-       userRepository.save(user);
-       UserRole userRole = UserRole.builder()
-               .userId(user.getUserId())
-               .roleId(1)
-               .build();
-       userRoleRepository.save(userRole);
-       return user;
+        userRepository.save(user);
+        UserRole userRole = UserRole.builder()
+                .userId(user.getUserId())
+                .roleId(1)
+                .build();
+        userRoleRepository.save(userRole);
+        return user;
     }
 
-    public String login(ReqLoginDto reqLoginDto) {
-        User foundUser = userRepository
-                .findByUsername(reqLoginDto.getUsername())
+    public String login(ReqLoginDto dto) {
+        User user = userRepository
+                .findByUsername(dto.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("사용자 정보를 다시 확인하세요."));
-        if(!passwordEncoder.matches(reqLoginDto.getPassword(), foundUser.getPassword())) {
+
+        if(!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
             throw new BadCredentialsException("사용자 정보를 다시 확인하세요.");
         }
 
-        Date expires = new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 7);
+        Date expires = new Date(new Date().getTime() + (1000l * 60 * 60 * 24 * 7));
 
         return jwtUtil.generateToken(
-                foundUser.getUsername(),
-                Integer.toString(foundUser.getUserId()),
+                user.getUsername(),
+                Integer.toString(user.getUserId()),
                 expires);
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    public void updateProfileImg(User user, MultipartFile file) {
+        final String PROFILE_IMG_FILE_PATH = "/upload/user/profile";
+        String savedFileName = fileService.saveFile(PROFILE_IMG_FILE_PATH, file);
+        userRepository.updateProfileImgById(user.getUserId(), savedFileName);
+        if(user.getProfileImg() == null) {
+            return;
+        }
+        fileService.deleteFile(PROFILE_IMG_FILE_PATH + "/" + user.getProfileImg());
+    }
 
+    @Transactional(rollbackFor = Exception.class)
+    public void updateNickname(User user, String nickname) {
+        userRepository.updateNickname(user.getUserId(), nickname);
+    }
 }
+
+
+
+
+
+
+
+
+

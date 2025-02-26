@@ -11,4 +11,4 @@ export const useLoginMutation = () => useMutation({
     mutationKey: ["loginMutation"],
     mutationFn: loginApi,
     retry: 0,
-})
+});

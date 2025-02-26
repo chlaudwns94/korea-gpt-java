@@ -7,8 +7,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.prefs.BackingStoreException;
-
 @RestControllerAdvice
 public class GlobalControllerAdvice {
 

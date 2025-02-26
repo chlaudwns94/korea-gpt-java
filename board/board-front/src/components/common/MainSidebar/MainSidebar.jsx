@@ -12,15 +12,18 @@ import { useNavigate } from 'react-router-dom';
 function MainSidebar(props) {
     const navigate = useNavigate();
     const [ isOpen, setOpen ] = useRecoilState(mainSidebarIsOpenState);
-
     const loginUser = useUserMeQuery();
 
     const handleSidebarClose = () => {
         setOpen(false);
     }
 
-    const handleLoginButtonOcClick = () => {
+    const handleLoginButtonOnClick = () => {
         navigate("/auth/login");
+    }
+
+    const handleAccountButtonOnClick = () => {
+        navigate("/account/setting")
     }
 
     return (
@@ -30,17 +33,23 @@ function MainSidebar(props) {
                     <div css={s.topGroup}>
                         <div css={s.user}>
                             {
-                                loginUser.isError
+                                loginUser.isError 
                                 ?
-                                <button css={emptyButton} onClick={handleLoginButtonOcClick}>
+                                <button css={emptyButton} onClick={handleLoginButtonOnClick}>
                                     <span css={s.authText}>
                                         <LuLockKeyhole />로그인 후 이용하기
                                     </span>
                                 </button>
                                 :
-                                <button css={emptyButton} >
+                                <button css={emptyButton} onClick={handleAccountButtonOnClick}>
                                     <span css={s.authText}>
-                                        <LuLockKeyhole />{loginUser.data?.data?.nickname}
+                                        <div css={s.profileImgBox}>
+                                        {
+                                            loginUser.isLoading || 
+                                            <img src={`http://localhost:8080/image/user/profile/${loginUser?.data?.data.profileImg}`} alt="" />
+                                        }
+                                        </div>
+                                        {loginUser.data?.data?.nickname}
                                     </span>
                                 </button>
                             }

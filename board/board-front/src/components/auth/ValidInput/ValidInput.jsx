@@ -19,6 +19,7 @@ function ValidInput({
         if(!regexp) {
             return;
         }
+
         setInputValidError(prev => ({
             ...prev,
             [name]: !regexp.test(value),

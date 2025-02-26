@@ -24,12 +24,11 @@ public class JwtUtil {
                 .setSubject(subject)
                 .setId(id)
                 .setExpiration(expires)
-                .signWith(SignatureAlgorithm.HS512, key)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
     public Claims parseToken(String token) {
         return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
     }
-
 }

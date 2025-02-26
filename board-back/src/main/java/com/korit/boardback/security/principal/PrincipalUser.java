@@ -1,6 +1,5 @@
 package com.korit.boardback.security.principal;
 
-
 import com.korit.boardback.entity.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,13 +21,13 @@ public class PrincipalUser implements UserDetails, OAuth2User {
     private String name;
 
     @Override
-    public String getPassword() {
-        return user.getPassword();
+    public String getUsername() {
+        return user.getUsername();
     }
 
     @Override
-    public String getUsername() {
-        return user.getUsername();
+    public String getPassword() {
+        return user.getPassword();
     }
 
     @Override
@@ -43,7 +42,9 @@ public class PrincipalUser implements UserDetails, OAuth2User {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return user.getUserRoles().stream()
+        return user
+                .getUserRoles()
+                .stream()
                 .map(userRole -> new SimpleGrantedAuthority(userRole.getRole().getRoleName()))
                 .collect(Collectors.toList());
     }
@@ -59,12 +60,24 @@ public class PrincipalUser implements UserDetails, OAuth2User {
     }
 
     @Override
-    public boolean isEnabled() {
-        return user.getAccountEnabled() == 1;
-    }
-
-    @Override
     public boolean isCredentialsNonExpired() {
         return user.getCredentialsExpired() == 1;
     }
+
+    @Override
+    public boolean isEnabled() {
+        return user.getAccountEnabled() == 1;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
