@@ -81,7 +81,7 @@ export const itemGroup = css`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2rem;
-`
+`;
 
 export const subTitle = css`
     margin: 0;
@@ -111,4 +111,4 @@ export const borderButton = css`
     &:active {
         background-color: #eeeeee;
     }
-`
+`;

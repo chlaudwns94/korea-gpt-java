@@ -48,16 +48,14 @@
             nickname = #{nickname}
         where
             user_id = #{userId}
-
     </update>
 
     <update id="updatePasswordById">
         update user_tb
         set
-        password = #{password}
+            password = #{password}
         where
-        user_id = #{userId}
-
+            user_id = #{userId}
     </update>
 
     <update id="updateAccountEnabledByUsername">
@@ -66,7 +64,6 @@
             account_enabled = 1
         where
             username = #{username}
-
     </update>
 
     <select id="selectById" resultMap="userResultMap">

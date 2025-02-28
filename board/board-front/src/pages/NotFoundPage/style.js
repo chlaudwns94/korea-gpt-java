@@ -6,7 +6,9 @@ export const layout = css`
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
     font-size: 4rem;
+
 
     & > h1 {
         color: #d02121;

@@ -33,9 +33,11 @@ public class UserController {
         return ResponseEntity.ok().body(principalUser.getUser());
     }
 
-
     @PostMapping("/user/profile/img")
-    public ResponseEntity<?> changeProfileImg(@AuthenticationPrincipal PrincipalUser principalUser, @RequestPart MultipartFile file) {
+    public ResponseEntity<?> changeProfileImg(
+            @AuthenticationPrincipal PrincipalUser principalUser,
+            @RequestPart MultipartFile file) {
+
         userService.updateProfileImg(principalUser.getUser(), file);
         return ResponseEntity.ok().build();
     }
@@ -44,7 +46,7 @@ public class UserController {
     public ResponseEntity<?> changeNickname(
             @AuthenticationPrincipal PrincipalUser principalUser,
             @RequestBody Map<String, String> requestBody
-    ) {
+            ) {
         String nickname = requestBody.get("nickname");
         userService.updateNickname(principalUser.getUser(), nickname);
         return ResponseEntity.ok().build();
@@ -60,3 +62,13 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 }
+
+
+
+
+
+
+
+
+
+

@@ -25,7 +25,7 @@ public class UserRepository {
         return user;
     }
 
-    public void updateProfileImgById(int userId, String profileImg) {
+    public void updateProfileImg(int userId, String profileImg) {
         userMapper.updateProfileImgById(userId, profileImg);
     }
 
@@ -40,4 +40,5 @@ public class UserRepository {
     public void updateAccountEnabled(String username) {
         userMapper.updateAccountEnabledByUsername(username);
     }
+
 }

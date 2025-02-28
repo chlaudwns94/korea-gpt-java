@@ -7,8 +7,8 @@ import { useUpdatePasswordMutation } from '../../../mutations/accountMutation';
 import Swal from 'sweetalert2';
 
 function PasswordModal({ setOpen }) {
-
     const passwordMutation = useUpdatePasswordMutation();
+
     const [ passwordValue, setPasswordValue ] = useState({
         newPassword: "",
         confirmPassword: "",
@@ -18,7 +18,7 @@ function PasswordModal({ setOpen }) {
         setPasswordValue(prev => ({
             ...prev,
             [e.target.name]: e.target.value,
-        }))
+        }));
     }
 
     const handleSetButtonOnClick = async () => {
@@ -30,12 +30,12 @@ function PasswordModal({ setOpen }) {
             timer: 1000,
             position: "center",
         });
-        setOpen(false)
+        setOpen(false);
     }
 
     const handleCloseButtonOnClick = () => {
         setOpen(false);
-    }
+    } 
 
     return (
         <div>
@@ -45,28 +45,26 @@ function PasswordModal({ setOpen }) {
             <div css={s.header}>
                 <div css={s.headerIcon}><CgPassword /></div>
                 <h2 css={s.headerTitle}>Set a password</h2>
-                <p>비밀번호는 최소 8자 이상, 또는 16자 이하의 영문 숫자 조합을 사용하세요.</p>
+                <p css={s.headerMessage}>비밀번호는 최소 8자 이상, 또는 16자 이하의 영문, 숫자 조합을 사용하세요.</p>
             </div>
             <div>
                 <div css={s.inputGroup}>
                     <label>Enter a new password</label>
                     <input type="password" name='newPassword' 
-                    value={passwordValue.newPassword}
-                     onChange={handlePasswordInputOnChange}/>
+                        value={passwordValue.newPassword} 
+                        onChange={handlePasswordInputOnChange} />
                 </div>
                 <div css={s.inputGroup}>
                     <label>Confirm your new password</label>
-                    <input type="password" name='confirmPassword'
-                     value={passwordValue.confirmPassword} 
-                     onChange={handlePasswordInputOnChange}/>
+                    <input type="password" name='confirmPassword' 
+                        value={passwordValue.confirmPassword} 
+                        onChange={handlePasswordInputOnChange} />
                 </div>
-                <button css={s.setButton} 
+                <button 
+                    css={s.setButton} 
                     disabled={!passwordValue.newPassword || !passwordValue.confirmPassword}
                     onClick={handleSetButtonOnClick}
-                    >
-                    
-                    
-                    Set a password</button>
+                >Set a password</button>
             </div>
         </div>
     );

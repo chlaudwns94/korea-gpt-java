@@ -5,7 +5,7 @@ import MainSidebar from '../../components/common/MainSidebar/MainSidebar';
 import MainContainer from '../../components/common/MainContainer/MainContainer';
 import { useUserMeQuery } from '../../queries/userQuery';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
-import { QueryClient, useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query';
 
 function MainRoute(props) {
     const navigate = useNavigate();
@@ -14,9 +14,8 @@ function MainRoute(props) {
 
     useEffect(() => {
         if(queryState.status === "error") {
-            navigate("/auth/login")
+            navigate("/auth/login");
         }
-   
     }, [queryState]);
 
     return queryState.status === "success" &&
@@ -25,11 +24,11 @@ function MainRoute(props) {
             <MainContainer>
                 <Routes>
                     <Route path="/account/setting" element={<AccountPage />} />
+                    
                     <Route path="/*" element={<NotFoundPage />} />
                 </Routes>
             </MainContainer>
         </>
-
 }
 
 export default MainRoute;

@@ -14,20 +14,21 @@ public class FileService {
     private String rootPath;
 
     public String saveFile(String path, MultipartFile file) {
-        if (file.isEmpty()) {
+        if(file.isEmpty()) {
             return null;
         }
+
         String newFilename = null;
         try {
             String originalFilename = file.getOriginalFilename();
-            newFilename = UUID.randomUUID().toString().replace("-", "") + "_" + originalFilename;
+            newFilename = UUID.randomUUID().toString().replaceAll("-", "") + "_" + originalFilename;
             File newFilePath = new File(rootPath + "/" + path);
-            if (!newFilePath.exists()) {
+            if(!newFilePath.exists()) {
                 newFilePath.mkdirs();
             }
             File newFile = new File(rootPath + "/" + path + "/" + newFilename);
             file.transferTo(newFile);
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return newFilename;
@@ -35,7 +36,7 @@ public class FileService {
 
     public void deleteFile(String path) {
         File file = new File(rootPath + "/" + path);
-        if (file.exists()) {
+        if(file.exists()) {
             file.delete();
         }
     }

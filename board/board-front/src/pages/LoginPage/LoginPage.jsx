@@ -3,16 +3,16 @@ import * as s from './style';
 import React, { useState } from 'react';
 import { SiGoogle, SiKakao, SiNaver } from "react-icons/si";
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { useLoginMutation } from '../../mutations/authMutation';
+import { useLoginMutation, useSendAuthMailMutation } from '../../mutations/authMutation';
 import Swal from 'sweetalert2';
 import { setTokenLocalStorage } from '../../configs/axiosConfig';
-import { useUserMeQuery } from '../../queries/userQuery';
 import { useQueryClient } from '@tanstack/react-query';
 
 function LoginPage(props) {
     const navigate = useNavigate();
-    const loginMutation = useLoginMutation();
     const queryClient = useQueryClient();
+    const loginMutation = useLoginMutation();
+    const sendAuthMailMutation = useSendAuthMailMutation();
 
     const [ searchParams, setSearchParams ] = useSearchParams();
 
@@ -41,16 +41,41 @@ function LoginPage(props) {
                 position:"center",
                 showConfirmButton: false,
             });
-            await queryClient.invalidateQueries({queryKey: ["userMeQuery"]})
+            await queryClient.invalidateQueries({queryKey: ["userMeQuery"]});
             navigate("/");
         } catch(error) {
-            await Swal.fire({
-                title: '로그인 실패',
-                text: '사용자 정보를 다시 확인해주세요.',
-                confirmButtonText: '확인',
-                confirmButtonColor: "#e22323"
-            });
+            if(error.response.status === 401) {
+                const result = await Swal.fire({
+                    title: '계정 활성화',
+                    text: '계정을 활성화 하려면 등록하신 메일을 통해 계정 인증을 하세요. 다시 메일 전송이 필요하면 전송버튼을 클릭하세요.',
+                    confirmButtonText: '전송',
+                    confirmButtonColor: "#2389e2",
+                    showCancelButton: true,
+                    cancelButtonText: '취소',
+                    cancelButtonColor: "#999999",
+                });
+                if(result.isConfirmed) {
+                    await sendAuthMailMutation.mutateAsync(inputValue.username);
+                    await Swal.fire({
+                        title: '메일 전송 완료',
+                        confirmButtonText: '확인',
+                        confirmButtonColor: "#2389e2"
+                    });
+                }
+
+            } else {
+                await Swal.fire({
+                    title: '로그인 실패',
+                    text: '사용자 정보를 다시 확인해주세요.',
+                    confirmButtonText: '확인',
+                    confirmButtonColor: "#e22323"
+                });
+            }
         }
+    }
+
+    const handleOAuth2LoginOnClick = (provider) => {
+        window.location.href = `http://localhost:8080/oauth2/authorization/${provider}`;
     }
 
 
@@ -65,13 +90,13 @@ function LoginPage(props) {
                 <main>
                     <div css={s.oauth2Group}>
                         <div css={s.groupBox}>
-                            <button css={s.oauth2Button}>
+                            <button css={s.oauth2Button} onClick={() => handleOAuth2LoginOnClick("google")}>
                                 <div css={s.oauth2Icon}><SiGoogle /></div>
                                 <span css={s.oauth2Text}>Continue with Google</span>
                             </button>
                         </div>
                         <div css={s.groupBox}>
-                            <button css={s.oauth2Button}>
+                            <button css={s.oauth2Button} onClick={() => handleOAuth2LoginOnClick("naver")}>
                                 <div css={s.oauth2Icon}><SiNaver /></div>
                                 <span css={s.oauth2Text}>Continue with Naver</span>
                             </button>

@@ -8,7 +8,7 @@ function NotFoundPage(props) {
         <div css={s.layout}>
             <BiError />
             <h1>Not Found Page</h1>
-            <p>This is not the web page you are looking for</p>
+            <p>This is not the web page you are looking for.</p>
         </div>
     );
 }
