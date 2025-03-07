@@ -80,14 +80,14 @@ function AccountPage(props) {
                     <button css={s.borderButton} onClick={handleChangeEmailButtonOnClick}>Change email</button>
                 </div>
                 {
-                    !!loginUser?.data?.data.oauth2Name || 
-                <div css={s.itemGroup}>
-                    <div>
-                        <h3 css={s.subTitle}>password</h3>
-                        <p css={s.subContent}>계정에 로그인할 영구 비밀번호를 설정합니다.</p>
+                    !!loginUser?.data?.data?.oauth2Name ||
+                    <div css={s.itemGroup}>
+                        <div>
+                            <h3 css={s.subTitle}>password</h3>
+                            <p css={s.subContent}>계정에 로그인할 영구 비밀번호를 설정합니다.</p>
+                        </div>
+                        <button css={s.borderButton} onClick={handleChangePasswordButtonOnClick}>Change password</button>
                     </div>
-                    <button css={s.borderButton} onClick={handleChangePasswordButtonOnClick}>Change password</button>
-                </div>
                 }
             </div>
             <ReactModal 

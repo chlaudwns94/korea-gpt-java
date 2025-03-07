@@ -61,8 +61,27 @@ export const inputGroup = css`
     }
 `;
 
+export const verifyInput = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > input {
+        margin: 0 0.5rem;
+        width: 2rem;
+        height: 2rem;
+        text-align: center;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+`;
+
 export const emailInputAndSendButton = css`
     display: flex;
+    align-items: center;
 
     & > input {
         box-sizing: border-box;
@@ -77,6 +96,13 @@ export const emailInputAndSendButton = css`
         background-color: #fafafa;
     }
 
+    & > span {
+        margin-right: 1rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+        cursor: default;
+    }
+
     & > button {
         box-sizing: border-box;
         border: none;
@@ -86,17 +112,16 @@ export const emailInputAndSendButton = css`
         color: #ffffff;
         cursor: pointer;
 
-    &:active {
-        background-color: #1b65af;
-    }
+        &:active {
+            background-color: #1b65af;
+        }
 
-    &:disabled {
-        background-color: #eeeeee;
-        cursor: default;
-    }
+        &:disabled {
+            background-color: #eeeeee;
+            cursor: default;
+        }
     }
 `;
-
 
 export const setButton = css`
     box-sizing: border-box;

@@ -19,11 +19,11 @@ import java.util.Date;
 @Component
 public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler {
 
-    @Value("${react.server.protocol}")
+    @Value(value = "${react.server.protocol}")
     private String protocol;
-    @Value("${react.server.host}")
+    @Value(value = "${react.server.host}")
     private String host;
-    @Value("${react.server.port}")
+    @Value(value = "${react.server.port}")
     private int port;
 
     @Autowired
@@ -33,10 +33,10 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         PrincipalUser principalUser = (PrincipalUser) authentication.getPrincipal();
         User user = principalUser.getUser();
-        Date expires = new Date(new Date().getTime() + 1000l * 60 * 60 * 7);
+        Date expires = new Date(new Date().getTime() + (1000l * 60 * 60 * 7));
         String accessToken = jwtUtil
                 .generateToken(user.getUsername(), Integer.toString(user.getUserId()), expires);
-        response.sendRedirect(String.format("%s://%s:%d/auth/login/oauth2?accessToken=%s",  protocol, host, port, accessToken));
+        response.sendRedirect(String.format("%s://%s:%d/auth/login/oauth2?accessToken=%s", protocol, host, port, accessToken));
     }
 
 }

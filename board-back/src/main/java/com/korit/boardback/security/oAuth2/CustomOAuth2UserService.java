@@ -22,9 +22,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private DefaultOAuth2UserService defaultOAuth2UserService;
-    @Autowired
     private UserRoleRepository userRoleRepository;
+    @Autowired
+    private DefaultOAuth2UserService defaultOAuth2UserService;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -32,27 +32,28 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String email = null;
         String oauth2Name = null;
         String oauth2Provider = userRequest.getClientRegistration().getRegistrationId();
-        System.out.println(oauth2Provider);
         Map<String, Object> attributes = getDefaultOAuth2User(userRequest).getAttributes();
         if(oauth2Provider.equalsIgnoreCase("naver")) {
-            attributes = (Map<String, Object>)attributes.get("response");
+            attributes = (Map<String, Object>) attributes.get("response");
             oauth2Name = (String) attributes.get("id");
             email = (String) attributes.get("email");
         }
         if(oauth2Provider.equalsIgnoreCase("google")) {
             oauth2Name = (String) attributes.get("sub");
+            email = (String) attributes.get("email");
         }
-        final String USERNAME = oauth2Provider + "_" + oauth2Name;
-        final String EMAIL = email;
+
+        final String username = oauth2Provider + "_" + oauth2Name;
+        final String finalEmail = email;
         final String finalOauth2Name = oauth2Name;
 
         User user = userRepository
-                .findByUsername(USERNAME)
+                .findByUsername(username)
                 .orElseGet(() -> {
                     User newUser = User.builder()
-                            .username(USERNAME)
-                            .nickname(USERNAME)
-                            .email(EMAIL)
+                            .username(username)
+                            .nickname(username)
+                            .email(finalEmail)
                             .oAuth2Name(finalOauth2Name)
                             .oAuth2Provider(oauth2Provider)
                             .accountExpired(1)
@@ -66,7 +67,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                             .roleId(1)
                             .build();
                     userRoleRepository.save(userRole);
-                    return userRepository.findByUsername(USERNAME).get();
+                    return userRepository.findByUsername(username).get();
                 });
 
         return PrincipalUser.builder()
